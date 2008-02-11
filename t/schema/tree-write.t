@@ -10,6 +10,7 @@ my $rs = $schema->resultset('Tree');
 $rs->mkdir('/foo/bar/baz');
 
 {
+    no warnings 'redefine';
     local *is = sub { 
         Test::More::is($_[0], $_[1], 
                        'ensure that row has right properties')
